@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Edit</title>
+</head>
+<body class="container">
+    <form action="/posts/edit/post{{ post.id }}" method="POST">
+            <br>
+            <h1 class="text-center">Edit Your Post</h1>
+            <br>
+            <a href="/posts" class="btn btn-danger">&laquo; Previous</a>
+            <br> <br>
+            <h2>{{ post.title }}</h2>
+            {% if post.author %}
+            <h2>By: <b>{{ post.author }}</b></h2> <br>
+            {% else %}
+            <h2>By: <b>Unknown</b></h2> <br>
+            {% endif %}  
+            <input class="form-control" maxlength="100" name="title" id="title" type="text" placeholder="New title">
+            <br>
+            <textarea name="content" class="form-control" id="content" rows="6" cols="80" placeholder="Second post"></textarea>
+            <br>
+            <input type="submit" value="Save" class="btn btn-primary">
+    </form>
+    {% if verif == 'nothing' %}
+        <script>window.alert("Empty Field !!");</script>
+    {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>
