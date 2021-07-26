@@ -9,22 +9,15 @@
             #>>> from app import db(our DataBase object)
             #>>> db.create_all() [ creating the db file if not exists ]
 '''
-
-# Flask, render_template, SQLAlchemy... ==> all of these are models to import (they are a defined classes btw)    
 from flask import Flask, render_template, request, redirect 
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
-# instanciation mta3 Flask class, na3mlou object esmou app(l5edma lkoll biha hiya) wel constructeur ya5ou '__name__' comme paramétre
 app = Flask(__name__)
 # chemin mta3 sqlite file we use [sqlite:///"filename"] ki yabda sqlite file wel app.py file fi nafs el path OR [ sqlite://// _ ../filepath ] ki yaba sqlite file fi absolute path
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
-# instanciation mta3 SQLAlchemy class with db object w ya5ou 'app' object as a parameter
 db = SQLAlchemy(app)
 
-# database tables nesta3mlouhom 3la asess classes fel app mta3na, [ class-name = table-name fil DB ] & [ class-attributes = table-colums ].
-# we don't use db object for updating or reading from the DataBase, we use BlogPost class!!
-# we use db for just creating tables, w betbi3a m3a koll table lezmna na3mloulou class here with the attributes to get access to it and db.create_all() command of course
 class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
